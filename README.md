@@ -2,6 +2,7 @@
 
 A lightweight, browser-based quiz platform that allows users to create and customize tests by simply editing one HTML file. It includes a tool to convert human-readable questions into JSON format for easy integration. The application is **fully open-source** under the **MIT license**.
 
+
 ![image](https://github.com/user-attachments/assets/3ddddb5a-9f9b-4915-a84b-52cb98bbfdd7)
 
 
