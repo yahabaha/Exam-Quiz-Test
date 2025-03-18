@@ -1,6 +1,4 @@
-# Exam-Quiz-Test
-
-# Exam Tester Quiz Platform
+# Exam-Quiz-Test Platform
 
 A lightweight, browser-based quiz platform that allows users to create and customize tests by simply editing one HTML file. It includes a tool to convert human-readable questions into JSON format for easy integration. The application is **fully open-source** under the **MIT license**.
 
