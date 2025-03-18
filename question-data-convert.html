@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>PDF Question Converter</title>
+  <style>
+    body {
+      margin: 20px;
+      font-family: sans-serif;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+    button {
+      margin: 10px 0;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Paste your question text here:</h2>
+  <textarea id="inputText"></textarea>
+  <br />
+  <button onclick="convertQuestions()">Convert to questionPool</button>
+  <h3>Output (JS data):</h3>
+  <pre id="output"></pre>
+  
+  <script>
+    function convertQuestions() {
+      const input = document.getElementById('inputText').value;
+      const lines = input.split('\n').map(line => line.trim()).filter(Boolean);
+
+      const questionPool = [];
+      let currentQuestion = null;
+
+      // Helper: finalize a question object (detect single vs multiple)
+      function finalizeQuestion() {
+        if (!currentQuestion) return;
+        // Determine question type
+        if (currentQuestion.correctAnswers.length === 1) {
+          currentQuestion.type = "single";
+        } else {
+          currentQuestion.type = "multiple";
+        }
+        questionPool.push(currentQuestion);
+      }
+
+      // We'll try to detect lines that match this pattern: "1. Some text"
+      // That indicates the start of a new question
+      const questionRegex = /^\d+\.\s+(.*)$/;  // e.g. "1. Question text"
+
+      // Parse lines
+      lines.forEach(line => {
+        const questionMatch = line.match(questionRegex);
+
+        if (questionMatch) {
+          // Found a new question => finalize the previous question, then start a new one
+          finalizeQuestion();
+          currentQuestion = {
+            question: questionMatch[1].trim(),
+            options: [],
+            correctAnswers: []
+          };
+        } else if (currentQuestion) {
+          // Probably one of the bullet lines for an answer
+          // Usually: "• Some text" or "• Some text *"
+          // Let's strip leading "• " if present
+          let answerText = line.replace(/^•\s*/, "");
+          
+          // Check if there's a trailing '*'
+          const starIndex = answerText.indexOf('*');
+          let isCorrect = false;
+          if (starIndex >= 0) {
+            isCorrect = true;
+            // Remove the asterisk (and anything after it if needed)
+            answerText = answerText.substring(0, starIndex).trim();
+          }
+
+          // Add to options
+          const optionIndex = currentQuestion.options.length;
+          currentQuestion.options.push(answerText);
+
+          // If it was correct, note the index
+          if (isCorrect) {
+            currentQuestion.correctAnswers.push(optionIndex);
+          }
+        }
+      });
+
+      // Final question after loop ends
+      finalizeQuestion();
+
+      // Show result
+      const outputEl = document.getElementById('output');
+      outputEl.textContent = "const questionPool = " + JSON.stringify(questionPool, null, 2) + ";";
+    }
+  </script>
+</body>
+</html>
