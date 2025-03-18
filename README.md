@@ -132,21 +132,14 @@ Navigate to the **Question Converter Page**, paste the human-readable format, an
    ```
 2. Open `index.html` in your browser.
 
----
 
 ## License
 
 This project is **open-source** under the **MIT License**. Feel free to use, modify, and distribute it!
 
----
 
 ## Contributing
 We welcome contributions! Feel free to submit pull requests or report issues.
 
----
-
-## Tags
-
----
 
 Enjoy building your quizzes! 🚀
