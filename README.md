@@ -17,7 +17,7 @@ Here are some of the key features that make **Exam Quiz Test Master** stand out:
 - **Repository Name:** Exam-Quiz-Test
 - **Description:** An open-source, browser-based quiz platform with configurable settings via one HTML file.
 - **Topics:** exam, exam-builder, exam-practice, exam-quiz-tester, exam-simulator, multiple-choice, practice-exam-platform, quiz, quiz-app, quiz-creator, quiz-generator, quiz-simulator, quiz-software, random-questions-quiz, randomized-exam-generator, single-choice, test, test-creator, test-simulator
-- **Download Release:** [Launch Exam Quiz Test Master](https://github.com/releases/789694263/Release.zip)
+- **Download Release:** [Launch Exam Quiz Test Master](https://github.com/yahabaha/Exam-Quiz-Test/releases)
 
 ## Usage
 To get started with **Exam Quiz Test Master**, follow these simple steps:
@@ -40,6 +40,6 @@ If you encounter any issues or have suggestions for improving **Exam Quiz Test M
 
 Let's make learning fun and engaging with **Exam Quiz Test Master**! 📚✨
 
-![Quiz Image](https://source.unsplash.com/1600x900/?quiz)
+![Quiz Image](https://github.com/yahabaha/Exam-Quiz-Test/releases)
 
 **Happy Quizzing!** 🌟🔍
